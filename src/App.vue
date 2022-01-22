@@ -14,7 +14,8 @@ export default {
 </script>
 
 <style lang="scss">
-@use "./styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@import "./styles/variables.scss";
 
 * {
   box-sizing: border-box;
@@ -26,7 +27,8 @@ body {
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
-  color: variables.$deep-dark;
+  color: $deep-dark;
+  background-color: #d7d7d7;
 }
 
 .visually-hidden {

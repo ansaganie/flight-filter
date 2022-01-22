@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="screen">
     <flight-catalog />
   </main>
 </template>
@@ -13,5 +13,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.screen {
+  max-width: 1140px;
+  margin: 50px auto;
+}
 </style>

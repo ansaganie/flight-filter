@@ -51,7 +51,7 @@ export default {
   flex-direction: column;
   position: relative;
 
-  max-width: 240px;
+  min-width: 240px;
   width: 100%;
 
   border: none;
