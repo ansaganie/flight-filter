@@ -1,4 +1,4 @@
-# aviata
+# Flight Filter
 
 ## Project setup
 ```
