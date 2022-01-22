@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .flight-line-header {
   display: flex;
