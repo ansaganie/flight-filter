@@ -1,16 +1,17 @@
 <template>
   <article class="flight-card">
-    <main-info />
-    <div class="price-service-info"></div>
+    <left-block />
+    <right-block />
   </article>
 </template>
 
 <script>
-import MainInfo from "./components/MainInfo.vue";
+import LeftBlock from "./components/LeftBlock.vue";
+import RightBlock from "./components/RightBlock.vue";
 
 export default {
   name: "FlightCard",
-  components: { MainInfo },
+  components: { LeftBlock, RightBlock },
 };
 </script>
 
@@ -18,14 +19,16 @@ export default {
 @import "../../styles/variables.scss";
 
 .flight-card {
+  display: flex;
+  justify-content: space-between;
+
   min-width: 880px;
   width: 100%;
   height: 168px;
   background: $background-primary;
-
-  padding: 40px 44px 20px 44px;
-
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+
+  overflow: hidden;
 }
 </style>

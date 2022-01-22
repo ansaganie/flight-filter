@@ -11,10 +11,10 @@
       <span class="route-dot" />
     </div>
 
-    <div class="docking-cities">
-      через Шымкент,
+    <span class="docking-cities">
+      через Шымкент, Астана, Актау, Атырау
       <time class="total-docking-time" datetime="PT1H150M0S">1 ч 50 м</time>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
 .flight-line-header {
   display: flex;
   justify-content: space-between;
+  max-width: 168px;
 }
 
 .origin-code,
@@ -59,7 +60,10 @@ export default {
 }
 
 .docking-cities {
+  display: block;
   color: #ff9900;
   text-align: center;
+  inline-size: 168px;
+  overflow-wrap: break-word;
 }
 </style>

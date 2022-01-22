@@ -1,6 +1,6 @@
 <template>
-  <div class="main-info">
-    <div class="main-info__top">
+  <div class="left-block">
+    <div class="left-block-top">
       <div class="airline">
         <img
           class="airline-logo"
@@ -12,7 +12,7 @@
       <itineraries />
     </div>
 
-    <div class="main-info-bottom">
+    <div class="left-block-bottom">
       <div class="flight-links">
         <dashed-anchor href="#">Детали перелета</dashed-anchor>
         <dashed-anchor href="#">Условия тарифа</dashed-anchor>
@@ -40,13 +40,14 @@ export default {
 <style lang="scss" scoped>
 @import "../../../styles/variables.scss";
 
-.main-info {
+.left-block {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+  padding: 40px 44px 20px 44px;
 
-  .main-info__top {
+  .left-block-top {
     display: flex;
     align-items: center;
     gap: $padding-optimum;
@@ -72,7 +73,7 @@ export default {
   }
 }
 
-.main-info-bottom {
+.left-block-bottom {
   display: flex;
   align-items: center;
 
