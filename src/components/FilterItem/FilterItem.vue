@@ -8,15 +8,17 @@
         </svg>
       </button>
     </div>
-    <label
-      v-for="(value, key) in filtersInfo.filters"
-      :key="key"
-      class="check-label"
-    >
-      <input :id="key" class="visually-hidden checkbox" type="checkbox" />
-      <span class="check-icon" />
-      {{ value }}
-    </label>
+    <div class="filter-footer">
+      <label
+        v-for="(value, key) in filtersInfo.filters"
+        :key="key"
+        class="check-label"
+      >
+        <input :id="key" class="visually-hidden checkbox" type="checkbox" />
+        <span class="check-icon" />
+        {{ value }}
+      </label>
+    </div>
   </fieldset>
 </template>
 
@@ -37,6 +39,7 @@ export default {
 @import "../../styles/mixins.scss";
 
 .filter-item {
+  margin: 0;
   min-width: 240px;
   width: 100%;
 
@@ -49,6 +52,18 @@ export default {
   background: #f5f5f5;
   background-size: 50%;
   border-radius: 4px;
+
+  overflow: hidden;
+}
+
+.filter-footer {
+  min-width: 240px;
+  max-height: 240px;
+  margin: -$padding-optimum;
+  padding: $padding-optimum;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .filter-title {
@@ -84,10 +99,11 @@ export default {
 
 .check-label {
   min-width: 100%;
-  height: 32px;
+  min-height: 32px;
 
   display: flex;
   align-items: center;
+  position: relative;
 
   margin: 0 -12px;
   padding-left: 36px;

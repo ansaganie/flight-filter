@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="catalog-filters">
     <h3 class="visually-hidden">Фильтры для списка перелетов</h3>
     <filter-item class="filter-item" :filtersInfo="tariffFilters" />
     <filter-item class="filter-item" :filtersInfo="airlineFilters" />
@@ -50,7 +50,9 @@ export default {
 <style lang="scss">
 @import "../../styles/variables.scss";
 
-.filter-item {
-  margin-bottom: $padding-optimum;
+.catalog-filters {
+  .filter-item {
+    margin-bottom: $padding-optimum;
+  }
 }
 </style>
