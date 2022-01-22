@@ -1,0 +1,129 @@
+<template>
+  <fieldset class="wrapper">
+    <legend class="title">Опции тарифа</legend>
+    <button class="clear-btn" @click.prevent>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="clear-btn__icon"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M10.6464 8.64648L13.2929 6.00004L10.6464 3.35359L11.3535 2.64648L14 5.29293L16.6464 2.64648L17.3535 3.35359L14.7071 6.00004L17.3535 8.64648L16.6464 9.35359L14 6.70714L11.3535 9.35359L10.6464 8.64648ZM2.91465 6.00003H8C8 6.34074 8.0284 6.67482 8.08296 7.00003H2.91465C2.70873 7.58263 2.15311 8.00003 1.5 8.00003C0.671573 8.00003 0 7.32846 0 6.50003C0 5.6716 0.671573 5.00003 1.5 5.00003C2.15311 5.00003 2.70873 5.41743 2.91465 6.00003ZM7.91465 10H9.52779C9.86799 10.3801 10.2559 10.7166 10.6822 11H7.91465C7.70873 11.5826 7.15311 12 6.5 12C5.84689 12 5.29127 11.5826 5.08535 11H0.5C0.223858 11 0 10.7762 0 10.5C0 10.2239 0.223858 10 0.5 10H5.08535C5.29127 9.41743 5.84689 9.00003 6.5 9.00003C7.15311 9.00003 7.70873 9.41743 7.91465 10ZM2.91465 14C2.70873 13.4174 2.15311 13 1.5 13C0.671573 13 0 13.6716 0 14.5C0 15.3285 0.671573 16 1.5 16C2.15311 16 2.70873 15.5826 2.91465 15H14.5C14.7761 15 15 14.7762 15 14.5C15 14.2239 14.7761 14 14.5 14H2.91465Z"
+        />
+      </svg>
+    </button>
+    <label class="check-label">
+      <input class="visually-hidden checkbox" type="checkbox" />
+      <span class="check-icon" />
+      Только прямые
+    </label>
+
+    <label class="check-label">
+      <input class="visually-hidden checkbox" type="checkbox" />
+      <span class="check-icon" />
+      Только с багажом
+    </label>
+
+    <label class="check-label">
+      <input class="visually-hidden checkbox" type="checkbox" />
+      <span class="check-icon" />
+      Только возвратные
+    </label>
+  </fieldset>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+@use "../../styles/variables.scss";
+
+.wrapper {
+  margin: 0;
+  padding: 12px;
+  border-block-start: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  max-width: 240px;
+  width: 100%;
+
+  border: none;
+  background: #f5f5f5;
+  background-size: 50%;
+  border-radius: 4px;
+
+  .title {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 12px;
+
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: variables.$deep-dark;
+    display: block;
+  }
+
+  .clear-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &__icon {
+      fill: #b9b9b9;
+    }
+
+    &:hover .clear-btn__icon {
+      fill: #7284e4;
+    }
+  }
+
+  .check-label {
+    display: flex;
+    align-items: center;
+    margin: 0 -12px;
+    padding-left: 36px;
+    min-width: 100%;
+    height: 32px;
+    &:hover {
+      background-color: #ebebeb;
+    }
+  }
+
+  .check-icon {
+    position: absolute;
+    margin-left: -24px;
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='11' height='11' rx='1.5' fill='white' stroke='%23B9B9B9'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .checkbox {
+    &:hover + .check-icon {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='11' height='11' rx='1.5' fill='white' stroke='%23B9B9B9'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.95452 4.1527L5.24992 9.44537L2 6.19545L3.41421 4.78123L5.16429 6.53131L8.4597 2.82397L9.95452 4.1527Z' fill='%23B9B9B9'/%3E%3C/svg%3E%0A");
+    }
+    &:checked + .check-icon {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='11' height='11' rx='1.5' fill='white' stroke='%23B9B9B9'/%3E%3Crect x='0.5' y='0.5' width='11' height='11' rx='1.5' fill='%2355BB06' stroke='%2355BB06'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.95452 4.1527L5.24992 9.44537L2 6.19545L3.41421 4.78123L5.16429 6.53131L8.4597 2.82397L9.95452 4.1527Z' fill='white'/%3E%3C/svg%3E");
+    }
+
+    &:checked:hover + .check-icon {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='11' height='11' rx='1.5' fill='%2355BB06' stroke='%2355BB06'/%3E%3Cpath d='M3 6H9' stroke='white' stroke-width='2'/%3E%3C/svg%3E%0A");
+    }
+  }
+}
+</style>

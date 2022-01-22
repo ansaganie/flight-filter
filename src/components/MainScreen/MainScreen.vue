@@ -1,9 +1,12 @@
 <template>
-  <div>Hello world</div>
+  <div><filters /></div>
 </template>
 
 <script>
-export default {};
+import Filters from "../Filters/Filters.vue";
+export default {
+  components: { Filters },
+};
 </script>
 
 <style>
