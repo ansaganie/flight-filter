@@ -1,10 +1,21 @@
 <template>
-  <div>Hello world</div>
+  <main class="screen">
+    <flight-catalog />
+  </main>
 </template>
 
 <script>
-export default {};
+import FlightCatalog from "../FlightCatalog/FlightCatalog.vue";
+
+export default {
+  name: "MainScreen",
+  components: { FlightCatalog },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+.screen {
+  max-width: 1140px;
+  margin: 50px auto;
+}
 </style>
