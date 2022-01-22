@@ -1,0 +1,17 @@
+@mixin anchor-button {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin icon-background {
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

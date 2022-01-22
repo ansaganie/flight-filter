@@ -25,7 +25,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  font-size: $small-font-size;
   line-height: 16px;
   color: $deep-dark;
   background-color: #d7d7d7;

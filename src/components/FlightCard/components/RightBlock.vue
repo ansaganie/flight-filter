@@ -17,10 +17,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
 .right-block {
-  width: 240px;
-  height: 100%;
+  @include wh(240px, 100%);
+
   background-color: #f5f5f5;
   padding: $padding-optimum 20px;
 
@@ -31,7 +32,7 @@ export default {
 
 .price {
   font-family: Arial;
-  font-size: 24px;
+  font-size: $large-font-size;
   line-height: 28px;
   padding-bottom: $padding-optimum;
 
@@ -42,21 +43,15 @@ export default {
 }
 
 .order-btn {
-  display: block;
+  @include anchor-button;
+  @include wh(200px, 40px);
   padding: 8px 12px;
-  width: 200px;
-  height: 40px;
+
   background: #55bb06;
   border-radius: 4px;
 
-  display: block;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   font-weight: 700;
-  font-size: 18px;
+  font-size: $medium-font-size;
   line-height: 25px;
   color: #fff;
   margin-bottom: 8px;
@@ -74,14 +69,8 @@ export default {
   gap: 4px;
 
   .add-luggage-btn {
-    width: 128px;
-    height: 24px;
-
-    display: block;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include anchor-button;
+    @include wh(128, 24);
 
     background: #eaf0fa;
     border-radius: 2px;

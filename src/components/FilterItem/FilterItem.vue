@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .wrapper {
   padding: $padding-optimum;
@@ -93,14 +94,13 @@ export default {
 }
 
 .check-icon {
+  @include wh(12px, 12px);
+  @include icon-background;
+
   position: absolute;
   margin-left: -24px;
-  width: 12px;
-  height: 12px;
+
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='11' height='11' rx='1.5' fill='white' stroke='%23B9B9B9'/%3E%3C/svg%3E%0A");
-  background-repeat: no-repeat no-repeat;
-  background-position: center center;
-  background-size: cover;
 }
 
 .checkbox {

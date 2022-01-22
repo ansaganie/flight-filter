@@ -26,11 +26,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
+$large-width: 168px;
 .flight-line-header {
   display: flex;
   justify-content: space-between;
-  max-width: 168px;
+  max-width: $large-width;
 }
 
 .origin-code,
@@ -41,19 +43,19 @@ export default {
 }
 
 .route-line {
+  @include wh($large-width, 1px);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 
-  width: 168px;
-  height: 1px;
   background-color: $gray;
 }
 
 .route-dot {
-  width: 5px;
-  height: 5px;
+  @include wh(5px, 5px);
+
   background-color: $background-primary;
   border: 1px solid $gray;
   border-radius: 50%;
@@ -63,7 +65,7 @@ export default {
   display: block;
   color: #ff9900;
   text-align: center;
-  inline-size: 168px;
+  inline-size: $large-width;
   overflow-wrap: break-word;
 }
 </style>
