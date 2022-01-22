@@ -1,11 +1,15 @@
 <template>
-  <div><filters /></div>
+  <main>
+    <flight-catalog />
+  </main>
 </template>
 
 <script>
-import Filters from "../Filters/Filters.vue";
+import FlightCatalog from "../FlightCatalog/FlightCatalog.vue";
+
 export default {
-  components: { Filters },
+  name: "MainScreen",
+  components: { FlightCatalog },
 };
 </script>
 

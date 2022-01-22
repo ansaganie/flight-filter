@@ -2,15 +2,17 @@
   <form>
     <filter-item class="filter-item" :filtersInfo="tariffFilters" />
     <filter-item class="filter-item" :filtersInfo="airlineFilters" />
+    <dashed-button>Сбросить все фильтры</dashed-button>
   </form>
 </template>
 
 <script>
 import FilterItem from "../FilterItem/FilterItem.vue";
+import DashedButton from "../../shared/DashedButton/DashedButton.vue";
 
 export default {
   name: "Filters",
-  components: { FilterItem },
+  components: { FilterItem, DashedButton },
   data() {
     return {
       tariffFilters: {
@@ -47,7 +49,8 @@ export default {
 
 <style lang="scss">
 @import "../../styles/variables.scss";
-.filter-item:not(:last-child) {
+
+.filter-item {
   margin-bottom: $padding-optimum;
 }
 </style>

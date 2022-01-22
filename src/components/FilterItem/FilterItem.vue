@@ -45,7 +45,6 @@ export default {
 @import "../../styles/variables.scss";
 
 .wrapper {
-  margin: 0;
   padding: $padding-optimum;
   border-block-start: 0;
   display: flex;
