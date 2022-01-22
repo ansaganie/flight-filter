@@ -15,16 +15,18 @@
 <script>
 import FlightCard from "../FlightCard/FlightCard.vue";
 
-export default { components: { FlightCard } };
+export default {
+  name: "FlightList",
+  components: { FlightCard },
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .flight-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  @include clear-list;
 }
 
 .flight-list-item {

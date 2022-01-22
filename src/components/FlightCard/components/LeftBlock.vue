@@ -4,8 +4,8 @@
       <div class="airline">
         <img
           class="airline-logo"
-          src="../../../assets/img/logo_mini_ks.png"
-          alt=""
+          src="https://aviata.kz/static/airline-logos/80x80/KC.png"
+          alt="Лого авиакомпании"
         />
         <div class="airline-name">Air Astana</div>
       </div>
@@ -39,6 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
 .left-block {
   display: flex;
@@ -59,13 +60,11 @@ export default {
   gap: 8px;
 
   &-logo {
-    width: 20px;
-    height: 20px;
+    @include wh(20px, 20px);
   }
 
   &-name {
-    width: 100px;
-    height: 20px;
+    @include wh(100px, 20px);
 
     font-weight: 600;
     font-size: 14px;

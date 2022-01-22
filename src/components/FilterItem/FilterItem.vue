@@ -1,11 +1,13 @@
 <template>
-  <fieldset class="wrapper">
-    <legend class="title">{{ filtersInfo.label }}</legend>
-    <button class="clear-btn" @click.prevent>
-      <svg width="20" height="20" class="filter-clear-icon">
-        <use xlink:href="#icon-clear-filter" />
-      </svg>
-    </button>
+  <fieldset class="filter-item">
+    <div class="filter-header">
+      <legend class="filter-title">{{ filtersInfo.label }}</legend>
+      <button class="clear-btn" @click.prevent>
+        <svg width="20" height="20" class="filter-clear-icon">
+          <use xlink:href="#icon-clear-filter" />
+        </svg>
+      </button>
+    </div>
     <label
       v-for="(value, key) in filtersInfo.filters"
       :key="key"
@@ -34,15 +36,14 @@ export default {
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
-.wrapper {
-  padding: $padding-optimum;
-  border-block-start: 0;
+.filter-item {
+  min-width: 240px;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   position: relative;
-
-  min-width: 240px;
-  width: 100%;
+  padding: $padding-optimum;
 
   border: none;
   background: #f5f5f5;
@@ -50,17 +51,17 @@ export default {
   border-radius: 4px;
 }
 
-.title {
+.filter-title {
+  @include clear-m0p0;
+  display: block;
+
   float: left;
-  margin: 0;
-  padding: 0;
   margin-bottom: $padding-optimum;
 
   font-weight: bold;
   font-size: 14px;
   line-height: 20px;
   color: $deep-dark;
-  display: block;
 }
 
 .clear-btn {
@@ -82,12 +83,17 @@ export default {
 }
 
 .check-label {
-  display: flex;
-  align-items: center;
-  margin: 0 -12px;
-  padding-left: 36px;
   min-width: 100%;
   height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0 -12px;
+  padding-left: 36px;
+
+  cursor: pointer;
+
   &:hover {
     background-color: #ebebeb;
   }

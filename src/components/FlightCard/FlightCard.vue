@@ -17,14 +17,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .flight-card {
+  @include wh(100%, 168px);
+
+  min-width: 880px;
+
   display: flex;
   justify-content: space-between;
 
-  min-width: 880px;
-  width: 100%;
-  height: 168px;
   background: $background-primary;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;

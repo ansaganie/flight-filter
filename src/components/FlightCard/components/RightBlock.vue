@@ -1,10 +1,10 @@
 <template>
   <div class="right-block">
-    <span class="price">590 240 <sub>₸</sub></span>
+    <span class="price">590 240<sub>₸</sub></span>
     <a class="order-btn" href="#" @click.prevent>Выбрать</a>
     <span class="price-includes">Цена за всех пассажиров</span>
     <div class="luggage-info">
-      <span class="luggage-offer">Нет багажа</span>
+      <span class="luggage-offer">Без багажа</span>
       <a class="add-luggage-btn" href="#" @click.prevent>+ Добавить багаж</a>
     </div>
   </div>
@@ -21,20 +21,20 @@ export default {
 
 .right-block {
   @include wh(240px, 100%);
-
-  background-color: #f5f5f5;
-  padding: $padding-optimum 20px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: $padding-optimum 20px;
+
+  background-color: #f5f5f5;
 }
 
 .price {
+  padding-bottom: $padding-optimum;
+
   font-family: Arial;
   font-size: $large-font-size;
   line-height: 28px;
-  padding-bottom: $padding-optimum;
 
   sub {
     font-size: 16px;
@@ -45,7 +45,9 @@ export default {
 .order-btn {
   @include anchor-button;
   @include wh(200px, 40px);
+
   padding: 8px 12px;
+  margin-bottom: 8px;
 
   background: #55bb06;
   border-radius: 4px;
@@ -54,7 +56,6 @@ export default {
   font-size: $medium-font-size;
   line-height: 25px;
   color: #fff;
-  margin-bottom: 8px;
 }
 
 .price-includes {
@@ -64,18 +65,26 @@ export default {
 
 .luggage-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+
   gap: 4px;
 
   .add-luggage-btn {
     @include anchor-button;
     @include wh(128, 24);
 
+    padding: 3px 8px;
+
     background: #eaf0fa;
     border-radius: 2px;
 
     color: #5763b3;
+  }
+
+  .luggage-offer {
+    min-width: 68px;
+    text-align: center;
   }
 }
 </style>

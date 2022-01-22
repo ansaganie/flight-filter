@@ -1,5 +1,5 @@
 <template>
-  <div class="flight-docking">
+  <div class="itineraries">
     <date-time />
     <flight-line />
     <date-time />
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.flight-docking {
+.itineraries {
   display: flex;
   gap: 30px;
 }

@@ -1,5 +1,6 @@
 <template>
   <form>
+    <h3 class="visually-hidden">Фильтры для списка перелетов</h3>
     <filter-item class="filter-item" :filtersInfo="tariffFilters" />
     <filter-item class="filter-item" :filtersInfo="airlineFilters" />
     <dashed-button>Сбросить все фильтры</dashed-button>
@@ -26,7 +27,6 @@ export default {
       airlineFilters: {
         label: "Авиакомпании",
         filters: {
-          ALL: "Все",
           KC: "Air Astana",
           HY: "Uzbekistan Airways",
           EK: "Emirates",
