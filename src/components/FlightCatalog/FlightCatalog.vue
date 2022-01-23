@@ -6,17 +6,19 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import Filters from '../Filters/Filters.vue';
 import FlightList from '../FlightList/FlightList.vue';
-import { MainPageFields, MainPageModuleName } from '../../store/MainPageModule';
+import { MainPageGetters, MainPageModuleName } from '../../store/MainPageModule';
+
+const { FilteredFlights } = MainPageGetters;
 
 export default {
   name: 'FlightCatalog',
   components: { Filters, FlightList },
   computed: {
-    ...mapState(MainPageModuleName, {
-      flights: MainPageFields.Flights,
+    ...mapGetters(MainPageModuleName, {
+      flights: FilteredFlights,
     }),
   },
 };

@@ -1,15 +1,32 @@
 <template>
   <form class="catalog-filters">
     <h3 class="visually-hidden">Фильтры для списка перелетов</h3>
-    <filter-item class="filter-item" :filtersInfo="tariffFilters" />
-    <filter-item class="filter-item" :filtersInfo="airlineFilters" />
+    <filter-item
+      class="filter-item"
+      :filtersInfo="tariffFilters"
+      :selectedFilters="selectedTariffs"
+      :onFilterChange="handleTariffFiltersChange"
+    />
+    <filter-item
+      class="filter-item"
+      :filtersInfo="airlineFilters"
+      :selectedFilters="selectedAirlines"
+      :onFilterChange="handleAirlineFiltersChange"
+
+    />
     <dashed-button>Сбросить все фильтры</dashed-button>
   </form>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
 import FilterItem from '../FilterItem/FilterItem.vue';
 import DashedButton from '../../shared/DashedButton/DashedButton.vue';
+import TariffFilterTypes from '../../GlobalConstants';
+import { MainPageStates, MainPageMutations, MainPageModuleName } from '../../store/MainPageModule';
+
+const { SelectedTariffs, SelectedAirlines } = MainPageStates;
+const { UpdateSelectedFilters } = MainPageMutations;
 
 export default {
   name: 'Filters',
@@ -19,9 +36,9 @@ export default {
       tariffFilters: {
         label: 'Опции тарифа',
         filters: {
-          DIRECT: 'Только прямые',
-          LUGGAGE: 'Только с багажом',
-          REFUND: 'Только возвратные',
+          [TariffFilterTypes.Direct]: 'Только прямые',
+          [TariffFilterTypes.WithBaggage]: 'Только с багажом',
+          [TariffFilterTypes.Refundable]: 'Только возвратные',
         },
       },
       airlineFilters: {
@@ -43,6 +60,33 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    ...mapMutations(MainPageModuleName, {
+      updateSelectedFilters: UpdateSelectedFilters,
+    }),
+    handleTariffFiltersChange(filterValue) {
+      this.updateSelectedFilters({
+        data: {
+          filterName: SelectedTariffs,
+          filterValue,
+        },
+      });
+    },
+    handleAirlineFiltersChange(filterValue) {
+      this.updateSelectedFilters({
+        data: {
+          filterName: SelectedAirlines,
+          filterValue,
+        },
+      });
+    },
+  },
+  computed: {
+    ...mapState(MainPageModuleName, {
+      selectedTariffs: SelectedTariffs,
+      selectedAirlines: SelectedAirlines,
+    }),
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <ul class="flight-list" ref="scrollComponent">
+  <ul v-if="flights.length > 0" class="flight-list" ref="scrollComponent">
     <li
       v-for="flight in renderedList"
       :key="flight.id"
@@ -8,6 +8,7 @@
       <flight-card :flight="flight" />
     </li>
   </ul>
+  <h3 v-if="flights.length === 0" class="empty-list-message">По выбранным фильтрам подходящих рейсов не найдено</h3>
 </template>
 
 <script>
@@ -58,6 +59,15 @@ export default {
       }
     },
   },
+  watch: {
+    flights() {
+      this.startIndex = 0;
+      this.endIndex = this.step;
+      this.renderedList = [];
+
+      this.addMoreItem();
+    },
+  },
 };
 </script>
 
@@ -71,5 +81,10 @@ export default {
 
 .flight-list-item {
   padding-bottom: $padding-optimum;
+}
+
+.empty-list-message {
+  text-align: center;
+  width: 100%;
 }
 </style>

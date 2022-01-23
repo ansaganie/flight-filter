@@ -14,7 +14,13 @@
         :key="key"
         class="check-label"
       >
-        <input :id="key" class="visually-hidden checkbox" type="checkbox" />
+        <input
+          :id="key"
+          class="visually-hidden checkbox"
+          type="checkbox"
+          @change="handleFilterChange"
+          :checked="selectedFilters.has(key)"
+        />
         <span class="check-icon" />
         {{ value }}
       </label>
@@ -29,6 +35,19 @@ export default {
     filtersInfo: {
       type: Object,
       required: true,
+    },
+    selectedFilters: {
+      type: Set,
+      required: true,
+    },
+    onFilterChange: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleFilterChange(evt) {
+      this.onFilterChange(evt.currentTarget.id);
     },
   },
 };
