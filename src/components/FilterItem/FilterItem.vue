@@ -19,7 +19,7 @@
           class="visually-hidden checkbox"
           type="checkbox"
           @change="handleFilterChange"
-          :checked="selectedFilters.has(key)"
+          :checked="selectedFilters.includes(key)"
         />
         <span class="check-icon" />
         {{ value }}
@@ -37,7 +37,7 @@ export default {
       required: true,
     },
     selectedFilters: {
-      type: Set,
+      type: Array,
       required: true,
     },
     onFilterChange: {

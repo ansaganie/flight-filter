@@ -1,5 +1,6 @@
 <template>
-  <section>
+  <section class="flight-list-container">
+    <h3 class="visually-hidden">Список рейсов</h3>
     <ul v-if="flights.length > 0" class="flight-list" ref="scrollComponent">
       <li
         v-for="flight in renderedList"
@@ -56,8 +57,9 @@ export default {
       const element = this.$refs.scrollComponent;
 
       if (
-        element.getBoundingClientRect().bottom < window.innerHeight
-        && this.flights.length > this.endIndex + 1
+        element
+        && element.getBoundingClientRect().bottom < window.innerHeight
+        && this.flights.length >= this.endIndex
       ) {
         this.addMoreItem();
       }
@@ -79,6 +81,9 @@ export default {
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
+.flight-list-container {
+ width: 100%;
+}
 .flight-list {
   @include clear-list;
 }
