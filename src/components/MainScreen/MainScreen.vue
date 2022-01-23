@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import FlightCatalog from "../FlightCatalog/FlightCatalog.vue";
+import FlightCatalog from '../FlightCatalog/FlightCatalog.vue';
 
 export default {
-  name: "MainScreen",
+  name: 'MainScreen',
   components: { FlightCatalog },
 };
 </script>

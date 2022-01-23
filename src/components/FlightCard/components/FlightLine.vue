@@ -1,32 +1,89 @@
 <template>
   <div class="flight-line">
     <div class="flight-line-header">
-      <span class="origin-code">ALA</span>
-      <span class="best-time">4 ч 20 м</span>
-      <span class="dest-code">TSE</span>
+      <span class="origin-code">{{ origAirportCode }}</span>
+      <span class="flight-time">{{ formattedFlightTime }}</span>
+      <span class="dest-code">{{ destAirportCode }}</span>
     </div>
 
     <div class="route-line">
       <span class="route-dot" />
+      <span v-for="(_num, index) in routeDots" :key="index" class="route-dot" />
       <span class="route-dot" />
     </div>
 
     <span class="docking-cities">
-      через Шымкент, Астана, Актау, Атырау
-      <time class="total-docking-time" datetime="PT1H150M0S">1 ч 50 м</time>
+      {{ middleCities }},
+      <time v-if="transferTime" class="transfer-time" datetime="PT1H150M0S">
+        {{ formattedTransferTime }}
+      </time>
     </span>
   </div>
 </template>
 
 <script>
+import formatDuration from '../../../services/datetime';
+
 export default {
-  name: "FlightLine",
+  name: 'FlightLine',
+  props: {
+    segments: {
+      type: Array,
+      required: true,
+    },
+    travelTime: {
+      type: Number,
+      required: true,
+    },
+    transferTime: {
+      type: Number,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      totalFlightDuration: 0,
+      totalTransferDuration: 0,
+    };
+  },
+  computed: {
+    routeDots() {
+      return new Array(this.segments.length - 1).fill(null);
+    },
+    origAirportCode() {
+      return this.segments[0].origin_code;
+    },
+    destAirportCode() {
+      return this.segments[this.segments.length - 1].dest_code;
+    },
+    middleCities() {
+      if (this.segments.length > 1) {
+        const cities = [];
+
+        this.segments.forEach((value, index) => {
+          if (index < this.segments.length - 1) {
+            cities.push(value.dest);
+          }
+        });
+
+        return `через ${cities.join(', ')}`;
+      }
+
+      return 'прямой рейс';
+    },
+    formattedFlightTime() {
+      return formatDuration(this.travelTime);
+    },
+    formattedTransferTime() {
+      return formatDuration(this.transferTime);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixins.scss";
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 $large-width: 168px;
 .flight-line-header {

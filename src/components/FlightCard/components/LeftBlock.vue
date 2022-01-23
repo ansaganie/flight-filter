@@ -4,12 +4,12 @@
       <div class="airline">
         <img
           class="airline-logo"
-          src="https://aviata.kz/static/airline-logos/80x80/KC.png"
+          :src="`https://aviata.kz/static/airline-logos/80x80/${itineraries.carrier}.png`"
           alt="Лого авиакомпании"
         />
-        <div class="airline-name">Air Astana</div>
+        <div class="airline-name">{{ airlineName }}</div>
       </div>
-      <itineraries />
+      <itineraries :itineraries="itineraries" />
     </div>
 
     <div class="left-block-bottom">
@@ -17,7 +17,7 @@
         <dashed-anchor href="#">Детали перелета</dashed-anchor>
         <dashed-anchor href="#">Условия тарифа</dashed-anchor>
       </div>
-      <div class="nonrefundable">
+      <div v-if="!flight.refundable" class="nonrefundable">
         <svg width="20" height="20" class="nonrefundable-icon">
           <use xlink:href="#icon-non-refundable" />
         </svg>
@@ -28,18 +28,32 @@
 </template>
 
 <script>
-import DashedAnchor from "../../../shared/DashedAnchor/DashedAnchor.vue";
-import Itineraries from "./Itineraries.vue";
+import DashedAnchor from '../../../shared/DashedAnchor/DashedAnchor.vue';
+import Itineraries from './Itineraries.vue';
 
 export default {
   components: { Itineraries, DashedAnchor },
-  name: "MainInfo",
+  name: 'MainInfo',
+  props: {
+    flight: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    itineraries() {
+      return this.flight.itineraries[0][0];
+    },
+    airlineName() {
+      return this.itineraries.carrier_name;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixins.scss";
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .left-block {
   display: flex;
@@ -65,6 +79,8 @@ export default {
 
   &-name {
     @include wh(100px, 20px);
+    display: flex;
+    align-items: center;
 
     font-weight: 600;
     font-size: 14px;
@@ -87,7 +103,7 @@ export default {
     display: flex;
     align-items: center;
 
-    font-family: "Arial", sans-serif;
+    font-family: 'Arial', sans-serif;
     &-icon {
       width: 16px;
       height: 16px;

@@ -1,7 +1,10 @@
-const { createStore } = require('vuex');
+import { createStore } from 'vuex';
+import MainPageModule, { MainPageModuleName } from './MainPageModule';
 
 const store = createStore({
-  modules: {},
+  modules: {
+    [MainPageModuleName]: MainPageModule,
+  },
 });
 
 export default store;

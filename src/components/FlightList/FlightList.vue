@@ -1,29 +1,29 @@
 <template>
   <ul class="flight-list">
-    <li class="flight-list-item">
-      <flight-card />
-    </li>
-    <li class="flight-list-item">
-      <flight-card />
-    </li>
-    <li class="flight-list-item">
-      <flight-card />
+    <li v-for="flight in flights" :key="flight.id" class="flight-list-item">
+      <flight-card :flight="flight" />
     </li>
   </ul>
 </template>
 
 <script>
-import FlightCard from "../FlightCard/FlightCard.vue";
+import FlightCard from '../FlightCard/FlightCard.vue';
 
 export default {
-  name: "FlightList",
+  name: 'FlightList',
   components: { FlightCard },
+  props: {
+    flights: {
+      type: Array,
+      required: true,
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .flight-list {
   @include clear-list;

@@ -1,21 +1,41 @@
 <template>
-  <time class="date-time" datetime="">
+  <time class="date-time" :datetime="datetime">
     <span class="date">
-      25 ноя, вс
-      <strong class="stops-count">+1</strong>
+      {{ date }}
+      <strong v-if="stopsCount > 0" class="stops-count"
+        >+{{ stopsCount }}</strong
+      >
     </span>
-    <span class="time">23:25</span>
+    <span class="time">{{ time }}</span>
   </time>
 </template>
 
 <script>
 export default {
-  name: "DateTime",
+  name: 'DateTime',
+  props: {
+    datetime: {
+      type: String,
+      required: true,
+    },
+    stopsCount: {
+      type: Number,
+      default: 0,
+    },
+  },
+  computed: {
+    date() {
+      return this.datetime.split(' ').slice(0, 3).join(' ').toLowerCase();
+    },
+    time() {
+      return this.datetime.split(' ')[3];
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/variables.scss";
+@import '../../../styles/variables.scss';
 
 .date-time {
   display: block;

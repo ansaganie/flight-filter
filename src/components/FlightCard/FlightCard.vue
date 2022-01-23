@@ -1,23 +1,29 @@
 <template>
   <article class="flight-card">
-    <left-block />
-    <right-block />
+    <left-block :flight="flight" />
+    <right-block :flight="flight" />
   </article>
 </template>
 
 <script>
-import LeftBlock from "./components/LeftBlock.vue";
-import RightBlock from "./components/RightBlock.vue";
+import LeftBlock from './components/LeftBlock.vue';
+import RightBlock from './components/RightBlock.vue';
 
 export default {
-  name: "FlightCard",
+  name: 'FlightCard',
   components: { LeftBlock, RightBlock },
+  props: {
+    flight: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .flight-card {
   @include wh(100%, 168px);
