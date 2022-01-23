@@ -2,7 +2,7 @@
   <fieldset class="filter-item">
     <div class="filter-header">
       <legend class="filter-title">{{ filtersInfo.label }}</legend>
-      <button class="clear-btn" @click.prevent>
+      <button class="clear-btn" @click.prevent="handleFilterClearClick">
         <svg width="20" height="20" class="filter-clear-icon">
           <use xlink:href="#icon-clear-filter" />
         </svg>
@@ -44,10 +44,17 @@ export default {
       type: Function,
       required: true,
     },
+    onFilterClearClick: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     handleFilterChange(evt) {
       this.onFilterChange(evt.currentTarget.id);
+    },
+    handleFilterClearClick() {
+      this.onFilterClearClick(this.filtersInfo.type);
     },
   },
 };

@@ -11,6 +11,7 @@ export const MainPageStates = {
 
 export const MainPageMutations = {
   UpdateSelectedFilters: 'update_selected_filters',
+  ClearSelectedFilters: 'clear_selected_filter',
 };
 
 export const MainPageGetters = {
@@ -64,6 +65,9 @@ const MainPageModule = {
       } else {
         current.add(value);
       }
+    },
+    [MainPageMutations.ClearSelectedFilters](state, payload) {
+      state[payload.data.filterName].clear();
     },
   },
   namespaced: true,

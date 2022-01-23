@@ -6,15 +6,16 @@
       :filtersInfo="tariffFilters"
       :selectedFilters="selectedTariffs"
       :onFilterChange="handleTariffFiltersChange"
+      :onFilterClearClick="handleFilterClearClick"
     />
     <filter-item
       class="filter-item"
       :filtersInfo="airlineFilters"
       :selectedFilters="selectedAirlines"
       :onFilterChange="handleAirlineFiltersChange"
-
+      :onFilterClearClick="handleFilterClearClick"
     />
-    <dashed-button>Сбросить все фильтры</dashed-button>
+    <dashed-button @click="handleAllFiltersClearClick">Сбросить все фильтры</dashed-button>
   </form>
 </template>
 
@@ -26,7 +27,7 @@ import TariffFilterTypes from '../../GlobalConstants';
 import { MainPageStates, MainPageMutations, MainPageModuleName } from '../../store/MainPageModule';
 
 const { SelectedTariffs, SelectedAirlines } = MainPageStates;
-const { UpdateSelectedFilters } = MainPageMutations;
+const { UpdateSelectedFilters, ClearSelectedFilters } = MainPageMutations;
 
 export default {
   name: 'Filters',
@@ -35,6 +36,7 @@ export default {
     return {
       tariffFilters: {
         label: 'Опции тарифа',
+        type: SelectedTariffs,
         filters: {
           [TariffFilterTypes.Direct]: 'Только прямые',
           [TariffFilterTypes.WithBaggage]: 'Только с багажом',
@@ -43,6 +45,7 @@ export default {
       },
       airlineFilters: {
         label: 'Авиакомпании',
+        type: SelectedAirlines,
         filters: {
           KC: 'Air Astana',
           HY: 'Uzbekistan Airways',
@@ -64,6 +67,7 @@ export default {
   methods: {
     ...mapMutations(MainPageModuleName, {
       updateSelectedFilters: UpdateSelectedFilters,
+      clearSelectedFilters: ClearSelectedFilters,
     }),
     handleTariffFiltersChange(filterValue) {
       this.updateSelectedFilters({
@@ -78,6 +82,25 @@ export default {
         data: {
           filterName: SelectedAirlines,
           filterValue,
+        },
+      });
+    },
+    handleFilterClearClick(filterName) {
+      this.clearSelectedFilters({
+        data: {
+          filterName,
+        },
+      });
+    },
+    handleAllFiltersClearClick() {
+      this.clearSelectedFilters({
+        data: {
+          filterName: SelectedTariffs,
+        },
+      });
+      this.clearSelectedFilters({
+        data: {
+          filterName: SelectedAirlines,
         },
       });
     },
