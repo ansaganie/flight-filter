@@ -1,15 +1,12 @@
 <template>
-  <MainScreenVue />
+  <div class="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import MainScreenVue from "./components/MainScreen/MainScreen.vue";
-
 export default {
-  name: "App",
-  components: {
-    MainScreenVue,
-  },
+  name: 'App',
 };
 </script>
 

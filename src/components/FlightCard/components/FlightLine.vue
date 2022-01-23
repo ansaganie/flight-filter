@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import formatDuration from '../../../services/datetime';
+import formatDuration from '../../../utils/DayJs';
 
 export default {
   name: 'FlightLine',

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import DashedAnchor from '../../../shared/DashedAnchor/DashedAnchor.vue';
+import DashedAnchor from '../../shared/DashedAnchor/DashedAnchor.vue';
 import Itineraries from './Itineraries.vue';
 
 export default {

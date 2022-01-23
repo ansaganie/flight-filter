@@ -1,14 +1,18 @@
 <template>
-  <ul v-if="flights.length > 0" class="flight-list" ref="scrollComponent">
-    <li
-      v-for="flight in renderedList"
-      :key="flight.id"
-      class="flight-list-item"
-    >
-      <flight-card :flight="flight" />
-    </li>
-  </ul>
-  <h3 v-if="flights.length === 0" class="empty-list-message">По выбранным фильтрам подходящих рейсов не найдено</h3>
+  <section>
+    <ul v-if="flights.length > 0" class="flight-list" ref="scrollComponent">
+      <li
+        v-for="flight in renderedList"
+        :key="flight.id"
+        class="flight-list-item"
+      >
+        <flight-card :flight="flight" />
+      </li>
+    </ul>
+    <h3 v-if="flights.length === 0" class="empty-list-message">
+      По выбранным фильтрам подходящих рейсов не найдено
+    </h3>
+  </section>
 </template>
 
 <script>
@@ -72,8 +76,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .flight-list {
   @include clear-list;

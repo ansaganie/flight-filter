@@ -21,7 +21,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 import FilterItem from '../FilterItem/FilterItem.vue';
-import DashedButton from '../../shared/DashedButton/DashedButton.vue';
+import DashedButton from '../shared/DashedButton/DashedButton.vue';
 import TariffFilterTypes from '../../GlobalConstants';
 import { MainPageStates, MainPageMutations, MainPageModuleName } from '../../store/MainPageModule';
 
