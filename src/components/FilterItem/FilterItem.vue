@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "FilterItem",
+  name: 'FilterItem',
   props: {
     filtersInfo: {
       type: Object,
@@ -35,8 +35,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .filter-item {
   margin: 0;
