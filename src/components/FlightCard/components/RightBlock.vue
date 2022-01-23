@@ -1,11 +1,11 @@
 <template>
   <div class="right-block">
-    <span class="price">{{ flight.price }} <sub>₸</sub></span>
+    <span class="price">{{ flight.price }} <sub>&#8376;</sub></span>
     <a class="order-btn" href="#" @click.prevent>Выбрать</a>
     <span class="price-includes">Цена за всех пассажиров</span>
     <div class="luggage-info">
       <span class="luggage-offer">{{ baggageInfo }}</span>
-      <a class="add-luggage-btn" href="#" @click.prevent>+ Добавить багаж</a>
+      <a class="add-luggage-btn" href="#" @click.prevent>&plus; Добавить багаж</a>
     </div>
   </div>
 </template>

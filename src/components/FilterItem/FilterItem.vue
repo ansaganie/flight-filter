@@ -29,6 +29,10 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce';
+
+const DEBOUNCE_TIMEOUT = 300;
+
 export default {
   name: 'FilterItem',
   props: {
@@ -50,12 +54,12 @@ export default {
     },
   },
   methods: {
-    handleFilterChange(evt) {
-      this.onFilterChange(evt.currentTarget.id);
-    },
-    handleFilterClearClick() {
+    handleFilterChange: debounce(function (evt) {
+      this.onFilterChange(evt.target.id);
+    }, DEBOUNCE_TIMEOUT),
+    handleFilterClearClick: debounce(function () {
       this.onFilterClearClick(this.filtersInfo.type);
-    },
+    }, DEBOUNCE_TIMEOUT),
   },
 };
 </script>

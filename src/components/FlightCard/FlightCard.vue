@@ -1,5 +1,6 @@
 <template>
   <article class="flight-card">
+    <h3 class="visually-hidden">Карточка рейса</h3>
     <left-block :flight="flight" />
     <right-block :flight="flight" />
   </article>

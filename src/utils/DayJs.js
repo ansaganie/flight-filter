@@ -36,4 +36,8 @@ const formatDuration = (period) => {
     .join('');
 };
 
-export default formatDuration;
+const formatDurationISO = period => dayjs
+  .duration(period, 'seconds')
+  .toISOString();
+
+export { formatDuration, formatDurationISO };

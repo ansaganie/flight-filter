@@ -17,7 +17,10 @@
 </template>
 
 <script>
+import throttle from 'lodash.throttle';
 import FlightCard from '../FlightCard/FlightCard.vue';
+
+const THROTTLE_TIMEOUT = 300;
 
 export default {
   name: 'FlightList',
@@ -39,21 +42,20 @@ export default {
   data() {
     return {
       startIndex: 0,
-      endIndex: 6,
-      step: 6,
+      endIndex: 10,
+      step: 10,
       renderedList: [],
     };
   },
   methods: {
     addMoreItem() {
-      this.renderedList = this.renderedList.concat(
-        this.flights.slice(this.startIndex, this.endIndex),
-      );
+      this.renderedList = this.renderedList
+        .concat(this.flights.slice(this.startIndex, this.endIndex));
 
       this.startIndex += this.step;
       this.endIndex += this.step;
     },
-    handleScroll() {
+    handleScroll: throttle(function () {
       const element = this.$refs.scrollComponent;
 
       if (
@@ -63,7 +65,7 @@ export default {
       ) {
         this.addMoreItem();
       }
-    },
+    }, THROTTLE_TIMEOUT),
   },
   watch: {
     flights() {

@@ -2,19 +2,32 @@
   <div class="flight-line">
     <div class="flight-line-header">
       <span class="origin-code">{{ origAirportCode }}</span>
-      <span class="flight-time">{{ formattedFlightTime }}</span>
+      <time
+        class="flight-time"
+        :datetime="formattedFlightTimeISO"
+      >
+        {{ formattedFlightTime }}
+      </time>
       <span class="dest-code">{{ destAirportCode }}</span>
     </div>
 
     <div class="route-line">
       <span class="route-dot" />
-      <span v-for="(_num, index) in routeDots" :key="index" class="route-dot" />
+      <span
+        v-for="(_num, index) in routeDots"
+        :key="index"
+        class="route-dot"
+      />
       <span class="route-dot" />
     </div>
 
-    <span class="docking-cities">
-      {{ middleCities }},
-      <time v-if="transferTime" class="transfer-time" datetime="PT1H150M0S">
+    <span class="transfer-cities">
+      {{ transferCities }},
+      <time
+        v-if="transferTime"
+        class="transfer-time"
+        :datetime="formattedTransferTimeISO"
+      >
         {{ formattedTransferTime }}
       </time>
     </span>
@@ -22,7 +35,7 @@
 </template>
 
 <script>
-import formatDuration from '../../../utils/DayJs';
+import { formatDuration, formatDurationISO } from '../../../utils/DayJs';
 
 export default {
   name: 'FlightLine',
@@ -40,12 +53,6 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      totalFlightDuration: 0,
-      totalTransferDuration: 0,
-    };
-  },
   computed: {
     routeDots() {
       return new Array(this.segments.length - 1).fill(null);
@@ -56,7 +63,7 @@ export default {
     destAirportCode() {
       return this.segments[this.segments.length - 1].dest_code;
     },
-    middleCities() {
+    transferCities() {
       if (this.segments.length > 1) {
         const cities = [];
 
@@ -76,6 +83,12 @@ export default {
     },
     formattedTransferTime() {
       return formatDuration(this.transferTime);
+    },
+    formattedFlightTimeISO() {
+      return formatDurationISO(this.travelTime);
+    },
+    formattedTransferTimeISO() {
+      return formatDurationISO(this.transferTime);
     },
   },
 };
@@ -118,7 +131,7 @@ $large-width: 168px;
   border-radius: 50%;
 }
 
-.docking-cities {
+.transfer-cities {
   display: block;
   color: #ff9900;
   text-align: center;

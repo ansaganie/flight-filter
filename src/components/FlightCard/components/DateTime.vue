@@ -3,7 +3,7 @@
     <span class="date">
       {{ date }}
       <strong v-if="stopsCount > 0" class="stops-count"
-        >+{{ stopsCount }}</strong
+        >&plus;{{ stopsCount }}</strong
       >
     </span>
     <span class="time">{{ time }}</span>
