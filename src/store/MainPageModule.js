@@ -29,6 +29,7 @@ const MainPageModule = {
   getters: {
     [MainPageGetters.FilteredFlights](state) {
       const tariffFilters = state[MainPageStates.SelectedTariffs];
+      const airlineFilters = state[MainPageStates.SelectedAirlines];
 
       return state[MainPageStates.Flights].filter((flight) => {
         let result = true;
@@ -36,6 +37,14 @@ const MainPageModule = {
         if (tariffFilters.size > 0) {
           tariffFilters.forEach((filter) => {
             if (!TariffFilters[filter](flight)) {
+              result = false;
+            }
+          });
+        }
+
+        if (airlineFilters.size > 0) {
+          airlineFilters.forEach((filter) => {
+            if (flight.itineraries[0][0].carrier !== filter) {
               result = false;
             }
           });
