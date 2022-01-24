@@ -99,10 +99,14 @@ export default {
 @import '../../../styles/mixins.scss';
 
 $large-width: 168px;
+
+.flight-line {
+    max-width: $large-width;
+}
+
 .flight-line-header {
   display: flex;
   justify-content: space-between;
-  max-width: $large-width;
 }
 
 .origin-code,
@@ -113,7 +117,7 @@ $large-width: 168px;
 }
 
 .route-line {
-  @include wh($large-width, 1px);
+  @include wh(100%, 1px);
 
   display: flex;
   justify-content: space-between;
@@ -137,5 +141,17 @@ $large-width: 168px;
   text-align: center;
   inline-size: $large-width;
   overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 710px) {
+  .flight-line {
+    max-width: none;
+    width: 100%;
+  }
+
+  .transfer-cities {
+    width: 100%;
+    inline-size: 100%;
+  }
 }
 </style>

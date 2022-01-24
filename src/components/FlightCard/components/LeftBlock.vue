@@ -58,7 +58,7 @@ export default {
 .left-block {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
   justify-content: space-between;
   padding: 40px 44px 20px 44px;
 
@@ -109,6 +109,39 @@ export default {
       height: 16px;
       margin-right: 8px;
     }
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .left-block {
+    margin: 0 auto;
+    padding: 12px;
+    align-items: center;
+  }
+
+  .left-block-top {
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .left-block {
+    padding: 70px 20px 8px;
+
+    .left-block-top {
+      width: 100%;
+    }
+  }
+
+  .left-block-bottom {
+    display: none;
+  }
+
+  .airline {
+    position: absolute;
+    top: 20px;
+    left: 20px;
   }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <article class="flight-card">
     <h3 class="visually-hidden">Карточка рейса</h3>
-    <left-block :flight="flight" />
-    <right-block :flight="flight" />
+    <left-block class="block-item" :flight="flight" />
+    <right-block class="block-item" :flight="flight" />
   </article>
 </template>
 
@@ -27,9 +27,10 @@ export default {
 @import '../../styles/mixins.scss';
 
 .flight-card {
-  @include wh(100%, 168px);
+  @include wh(100%, 100%);
 
-  min-width: 880px;
+  max-width: 880px;
+  max-height: 168px;
 
   display: flex;
   justify-content: space-between;
@@ -39,5 +40,25 @@ export default {
   border-radius: 4px;
 
   overflow: hidden;
+}
+
+@media screen and (max-width: 940px) {
+  .flight-card {
+    flex-direction: column;
+    align-items: center;
+    max-height: none;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .flight-card {
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .flight-card {
+    min-width: 300px;
+  }
 }
 </style>

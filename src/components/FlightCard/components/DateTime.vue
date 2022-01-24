@@ -2,9 +2,12 @@
   <time class="date-time" :datetime="datetime">
     <span class="date">
       {{ date }}
-      <strong v-if="stopsCount > 0" class="stops-count"
-        >&plus;{{ stopsCount }}</strong
+      <strong
+        v-if="stopsCount > 0"
+        class="stops-count"
       >
+        &plus;{{ stopsCount }}
+      </strong>
     </span>
     <span class="time">{{ time }}</span>
   </time>
@@ -42,6 +45,10 @@ export default {
   max-width: 72px;
   display: flex;
   flex-direction: column;
+}
+
+.date {
+  min-width: 72px;
 }
 
 .time {

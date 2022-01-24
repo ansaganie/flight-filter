@@ -29,4 +29,11 @@ export default {
   display: flex;
   gap: 20px;
 }
+
+@media screen and (max-width: 550px) {
+  .wrapper {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
 </style>

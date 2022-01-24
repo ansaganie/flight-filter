@@ -118,8 +118,18 @@ export default {
 @import '../../styles/variables.scss';
 
 .catalog-filters {
+  width: 100%;
+
   .filter-item {
     margin-bottom: $padding-optimum;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .catalog-filters {
+    .filter-item {
+      min-width: 300px;
+    }
   }
 }
 </style>
