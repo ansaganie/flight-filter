@@ -16,6 +16,6 @@ export default {
 <style lang="scss" scoped>
 .main-page {
   max-width: 1140px;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 </style>

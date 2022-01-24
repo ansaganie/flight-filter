@@ -40,6 +40,6 @@ body {
 .screen {
   margin: 0 auto;
   max-width: 1180px;
-  padding: 0 20px;
+  padding: 20px;
 }
 </style>
