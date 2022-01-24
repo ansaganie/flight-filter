@@ -40,4 +40,18 @@ const formatDurationISO = period => dayjs
   .duration(period, 'seconds')
   .toISOString();
 
-export { formatDuration, formatDurationISO };
+const getExtraDaysToArrival = (depDate, arrDate) => {
+  const first = dayjs(depDate);
+  const second = dayjs(arrDate);
+
+  if (!first.isSame(second, 'date')) {
+    const secondAsDays = Math.ceil(dayjs.duration(second.valueOf(), 'milliseconds').asDays());
+    const firstAsDays = Math.ceil(dayjs.duration(first.valueOf(), 'milliseconds').asDays());
+
+    return secondAsDays - firstAsDays;
+  }
+
+  return 0;
+};
+
+export { formatDuration, formatDurationISO, getExtraDaysToArrival };

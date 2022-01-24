@@ -10,7 +10,7 @@
     <date-time
       class="arrival-date"
       :datetime="arrivalDate"
-      :stopsCount="itineraries.stops"
+      :extraDaysToArrival="extraDaysToArrival"
     />
   </div>
 </template>
@@ -18,6 +18,7 @@
 <script>
 import DateTime from './DateTime.vue';
 import FlightLine from './FlightLine.vue';
+import { getExtraDaysToArrival } from '../../../utils/DayJs';
 
 export default {
   components: { DateTime, FlightLine },
@@ -38,6 +39,12 @@ export default {
     },
     transferTime() {
       return this.itineraries.layovers.reduce((sum, num) => sum + num, 0);
+    },
+    extraDaysToArrival() {
+      const depDate = this.itineraries.dep_date;
+      const arrDate = this.itineraries.arr_date;
+
+      return getExtraDaysToArrival(depDate, arrDate);
     },
   },
 };

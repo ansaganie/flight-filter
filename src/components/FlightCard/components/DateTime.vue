@@ -3,10 +3,10 @@
     <span class="date">
       {{ date }}
       <strong
-        v-if="stopsCount > 0"
-        class="stops-count"
+        v-if="extraDaysToArrival > 0"
+        class="extra-days-to-arrival"
       >
-        &plus;{{ stopsCount }}
+        &plus;{{ extraDaysToArrival }}
       </strong>
     </span>
     <span class="time">{{ time }}</span>
@@ -21,7 +21,7 @@ export default {
       type: String,
       required: true,
     },
-    stopsCount: {
+    extraDaysToArrival: {
       type: Number,
       default: 0,
     },
@@ -57,7 +57,7 @@ export default {
   line-height: 33px;
 }
 
-.stops-count {
+.extra-days-to-arrival {
   color: rgba(255, 55, 36, 0.8);
   font-weight: 600;
   font-size: 10px;
