@@ -1,23 +1,42 @@
 <template>
   <div class="right-block">
-    <span class="price">590 240<sub>₸</sub></span>
+    <span class="price">{{ flight.price }} <sub>&#8376;</sub></span>
     <a class="order-btn" href="#" @click.prevent>Выбрать</a>
     <span class="price-includes">Цена за всех пассажиров</span>
     <div class="luggage-info">
-      <span class="luggage-offer">Без багажа</span>
-      <a class="add-luggage-btn" href="#" @click.prevent>+ Добавить багаж</a>
+      <span class="luggage-offer">{{ baggageInfo }}</span>
+      <a class="add-luggage-btn" href="#" @click.prevent>&plus; Добавить багаж</a>
     </div>
   </div>
 </template>
 <script>
+const ServiceTypeMapper = {
+  '20KG': '20 кг',
+  '0PC': 'Без багажа',
+  '1PC': '1 шт',
+};
+
 export default {
-  name: "FlightCardRightBlock",
+  name: 'FlightCardRightBlock',
+  props: {
+    flight: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    baggageInfo() {
+      const servicesList = Object.keys(this.flight.services);
+
+      return ServiceTypeMapper[servicesList[0]];
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/variables.scss";
-@import "../../../styles/mixins.scss";
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .right-block {
   @include wh(240px, 100%);

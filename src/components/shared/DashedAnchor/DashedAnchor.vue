@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "DashedAnchor",
+  name: 'DashedAnchor',
 };
 </script>
 

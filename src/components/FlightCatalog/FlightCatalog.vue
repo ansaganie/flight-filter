@@ -1,17 +1,26 @@
 <template>
   <div class="wrapper">
     <filters class="filters" />
-    <flight-list class="flight-list" />
+    <flight-list class="flight-list" :flights="flights" />
   </div>
 </template>
 
 <script>
-import Filters from "../Filters/Filters.vue";
-import FlightList from "../FlightList/FlightList.vue";
+import { mapGetters } from 'vuex';
+import Filters from '../Filters/Filters.vue';
+import FlightList from '../FlightList/FlightList.vue';
+import { MainPageGetters, MainPageModuleName } from '../../store/MainPageModule';
+
+const { FilteredFlights } = MainPageGetters;
 
 export default {
-  name: "FlightCatalog",
+  name: 'FlightCatalog',
   components: { Filters, FlightList },
+  computed: {
+    ...mapGetters(MainPageModuleName, {
+      flights: FilteredFlights,
+    }),
+  },
 };
 </script>
 

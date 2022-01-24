@@ -2,7 +2,7 @@
   <fieldset class="filter-item">
     <div class="filter-header">
       <legend class="filter-title">{{ filtersInfo.label }}</legend>
-      <button class="clear-btn" @click.prevent>
+      <button class="clear-btn" @click.prevent="handleFilterClearClick">
         <svg width="20" height="20" class="filter-clear-icon">
           <use xlink:href="#icon-clear-filter" />
         </svg>
@@ -14,7 +14,13 @@
         :key="key"
         class="check-label"
       >
-        <input :id="key" class="visually-hidden checkbox" type="checkbox" />
+        <input
+          :id="key"
+          class="visually-hidden checkbox"
+          type="checkbox"
+          @change="handleFilterChange"
+          :checked="selectedFilters.includes(key)"
+        />
         <span class="check-icon" />
         {{ value }}
       </label>
@@ -24,19 +30,39 @@
 
 <script>
 export default {
-  name: "FilterItem",
+  name: 'FilterItem',
   props: {
     filtersInfo: {
       type: Object,
       required: true,
+    },
+    selectedFilters: {
+      type: Array,
+      required: true,
+    },
+    onFilterChange: {
+      type: Function,
+      required: true,
+    },
+    onFilterClearClick: {
+      type: Function,
+      required: true,
+    },
+  },
+  methods: {
+    handleFilterChange(evt) {
+      this.onFilterChange(evt.target.id);
+    },
+    handleFilterClearClick() {
+      this.onFilterClearClick(this.filtersInfo.type);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .filter-item {
   margin: 0;
@@ -73,7 +99,7 @@ export default {
   float: left;
   margin-bottom: $padding-optimum;
 
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   color: $deep-dark;
