@@ -8,7 +8,7 @@
 import FlightCatalog from '../FlightCatalog/FlightCatalog.vue';
 
 export default {
-  name: 'MainScreen',
+  name: 'MainPage',
   components: { FlightCatalog },
 };
 </script>

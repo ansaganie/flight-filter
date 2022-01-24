@@ -1,12 +1,12 @@
 <template>
   <div class="itineraries">
-    <date-time :datetime="depDate" />
+    <date-time :datetime="departureDate" />
     <flight-line
       :segments="itineraries.segments"
       :travelTime="itineraries.traveltime"
       :transferTime="transferTime"
     />
-    <date-time :datetime="arrDate" :stopsCount="itineraries.stops" />
+    <date-time :datetime="arrivalDate" :stopsCount="itineraries.stops" />
   </div>
 </template>
 
@@ -24,10 +24,10 @@ export default {
     },
   },
   computed: {
-    depDate() {
+    departureDate() {
       return this.itineraries.segments[0].dep_time;
     },
-    arrDate() {
+    arrivalDate() {
       return this.itineraries.segments[this.itineraries.segments.length - 1]
         .dep_time;
     },

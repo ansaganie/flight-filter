@@ -1,17 +1,17 @@
 import data from '../assets/data/results.json';
-import TariffFilterTypes from '../GlobalConstants';
+import { TariffFilterTypes } from '../GlobalConstants';
 
 export const MainPageModuleName = 'main-page-module';
 
 export const MainPageStates = {
   Flights: 'flights',
   SelectedTariffs: 'selected_tariffs',
-  SelectedAirlines: 'selected_airline',
+  SelectedAirlines: 'selected_airlines',
 };
 
 export const MainPageMutations = {
   UpdateSelectedFilters: 'update_selected_filters',
-  ClearSelectedFilters: 'clear_selected_filter',
+  ClearSelectedFilters: 'clear_selected_filters',
 };
 
 export const MainPageGetters = {

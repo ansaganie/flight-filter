@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { MAIN_PAGE_LINK } from '../GlobalConstants';
 
 const routes = [
   {
-    path: '/',
+    path: MAIN_PAGE_LINK,
     name: 'MainPage',
     component: () => import('../components/MainPage/MainPage.vue'),
   },

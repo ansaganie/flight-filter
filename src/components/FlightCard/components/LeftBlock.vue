@@ -33,7 +33,7 @@ import Itineraries from './Itineraries.vue';
 
 export default {
   components: { Itineraries, DashedAnchor },
-  name: 'MainInfo',
+  name: 'FlightCardLeftBlock',
   props: {
     flight: {
       type: Object,
