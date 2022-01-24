@@ -29,10 +29,6 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce';
-
-const DEBOUNCE_TIMEOUT = 300;
-
 export default {
   name: 'FilterItem',
   props: {
@@ -54,12 +50,12 @@ export default {
     },
   },
   methods: {
-    handleFilterChange: debounce(function (evt) {
+    handleFilterChange(evt) {
       this.onFilterChange(evt.target.id);
-    }, DEBOUNCE_TIMEOUT),
-    handleFilterClearClick: debounce(function () {
+    },
+    handleFilterClearClick() {
       this.onFilterClearClick(this.filtersInfo.type);
-    }, DEBOUNCE_TIMEOUT),
+    },
   },
 };
 </script>
@@ -103,7 +99,7 @@ export default {
   float: left;
   margin-bottom: $padding-optimum;
 
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   color: $deep-dark;
