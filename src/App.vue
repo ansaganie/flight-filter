@@ -1,6 +1,6 @@
 <template>
-  <div class="app">
-    <router-view></router-view>
+  <div class="screen">
+    <router-view />
   </div>
 </template>
 
@@ -35,5 +35,11 @@ body {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.screen {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 0 20px;
 }
 </style>

@@ -2,11 +2,16 @@
   <div class="itineraries">
     <date-time :datetime="departureDate" />
     <flight-line
+      class="flight-line"
       :segments="itineraries.segments"
       :travelTime="itineraries.traveltime"
       :transferTime="transferTime"
     />
-    <date-time :datetime="arrivalDate" :stopsCount="itineraries.stops" />
+    <date-time
+      class="arrival-date"
+      :datetime="arrivalDate"
+      :stopsCount="itineraries.stops"
+    />
   </div>
 </template>
 
@@ -42,5 +47,30 @@ export default {
 .itineraries {
   display: flex;
   gap: 30px;
+}
+
+@media screen and (max-width: 710px) {
+  .itineraries {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .flight-line {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 0 auto;
+  }
+
+  .arrival-date {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+   justify-self: flex-end;
+  }
 }
 </style>

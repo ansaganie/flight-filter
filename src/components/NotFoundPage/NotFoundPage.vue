@@ -1,9 +1,7 @@
 <template>
-  <main class="screen">
-    <div class="wrapper">
-      <h1>Ошибка 404. Страница не найдена.</h1>
-      <p>Запрашиваемая Вами страница не найдена. Попробуйте начать с <router-link :to="mainPageLink">главной страницы.</router-link></p>
-    </div>
+  <main class="not-found-page">
+    <h1>Ошибка 404. Страница не найдена.</h1>
+    <p>Запрашиваемая Вами страница не найдена. Попробуйте начать с <router-link :to="mainPageLink">главной страницы.</router-link></p>
   </main>
 </template>
 
@@ -21,12 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.screen {
-  max-width: 1200px;
-  padding: 20px;
-  margin: 0px auto;
-}
-.wrapper {
+.not-found-page {
   max-width: 1140px;
   margin: 50px auto;
 }

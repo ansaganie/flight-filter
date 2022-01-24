@@ -1,7 +1,9 @@
 <template>
   <div class="right-block">
-    <span class="price">{{ flight.price }} <sub>&#8376;</sub></span>
+    <div class="price-order-button">
+      <span class="price">{{ flight.price }} <sub>&#8376;</sub></span>
     <a class="order-btn" href="#" @click.prevent>Выбрать</a>
+    </div>
     <span class="price-includes">Цена за всех пассажиров</span>
     <div class="luggage-info">
       <span class="luggage-offer">{{ baggageInfo }}</span>
@@ -39,13 +41,21 @@ export default {
 @import '../../../styles/mixins.scss';
 
 .right-block {
-  @include wh(240px, 100%);
+  @include wh(100%, 100%);
+  max-width: 240px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: $padding-optimum 20px;
 
   background-color: #f5f5f5;
+}
+
+.price-order-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .price {
@@ -89,9 +99,10 @@ export default {
 
   gap: 4px;
 
-  .add-luggage-btn {
+}
+.add-luggage-btn {
     @include anchor-button;
-    @include wh(128, 24);
+    @include wh(100%, 24);
 
     padding: 3px 8px;
 
@@ -104,6 +115,33 @@ export default {
   .luggage-offer {
     min-width: 68px;
     text-align: center;
+  }
+@media screen and (max-width: 940px) {
+  .right-block{
+    max-width: none;
+  }
+
+  .price-order-button {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .luggage-offer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+  }
+
+  .price-order-button {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .add-luggage-btn {
+    display: none;
   }
 }
 </style>
